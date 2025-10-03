@@ -38,3 +38,24 @@ class Library:
             if b.isbn == isbn:
                 return b
         raise ValueError("Book not found")
+
+if __name__ == "__main__":
+    library1 = Library()
+
+    #Se agrega un libro y un usuario pide prestado el libro disponible (Test_I01)
+    book2 = Book("Batalia Book", "Batis Kent", 2013, "ISBN009")
+    library1.add_book(book2)
+    user2 = User("Renis", 2) 
+    library1.add_user(user2)
+    library1.borrow_book(2,"ISBN009")
+    print(user2.get_history())
+
+    #Devolución correcta de libro y se solicita otro préstamo del mismo libro con otro usuario. (Test_I02)
+    library1.return_book(2,"ISBN009")
+    print(user2.get_history())
+
+    user3 = User("Vicka", 3) 
+    library1.add_user(user3)
+    library1.borrow_book(3,"ISBN009")
+    print(user3.get_history())
+
